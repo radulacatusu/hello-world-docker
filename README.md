@@ -12,31 +12,43 @@ Use one of the several ways of running a Spring Boot application.
 
 ### Docker
 
-```docker build -t hello .
+```
+docker build -t hello .
 docker run --rm -d -p 8080:8080 hello
 docker stop "pid"
 docker ps
 docker container prune
-docker rm -f "pid"```
+docker rm -f "pid"
+```
 
 ### Docker console
-```docker exec -ti "pid" /bin/sh 
+```
+docker exec -ti "pid" /bin/sh 
 docker run --rm -ti "pid" bash
-docker logs -f "pid"```
+docker logs -f "pid"
+```
 
 ### Consul (service dicovery, configuration)
 http://localhost:8500
-```consul agent -dev```
+```
+consul agent -dev
+```
 
 ### Nomad (orchestrator)
 http://127.0.0.1:4646/
-```nomad agent -consul-address localhost:8500 -dev```
+```
+nomad agent -consul-address localhost:8500 -dev
+```
 
 As admin:
-```nomad run nomad-job.hcl
+```
+nomad run nomad-job.hcl
 nomad status nomad-job
-nomad alloc-status "pid"```
+nomad alloc-status "pid"
+```
 
-```docker run -d -p 5000:5000 --restart always --name registry registry:2
+```
+docker run -d -p 5000:5000 --restart always --name registry registry:2
 docker build -t localhost:5000/hello:latest .
-docker push localhost:5000/hello:latest```
+docker push localhost:5000/hello:latest
+```
